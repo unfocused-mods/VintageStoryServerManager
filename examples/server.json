@@ -1,0 +1,12 @@
+{
+  "name": "our-quiet-valley",
+  "account_id": "azure-personal",
+  "region": "australiaeast",
+  "size": "Standard_D4s_v5",
+  "game_version": "1.22.0",
+  "ssh_public_key": "ssh-ed25519 REPLACE_WITH_YOUR_PUBLIC_KEY",
+  "ssh_private_key": "/home/you/.ssh/id_ed25519",
+  "admin_cidr": "203.0.113.10/32",
+  "existing_host": "",
+  "ssh_user": "vsm"
+}

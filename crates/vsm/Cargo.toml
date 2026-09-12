@@ -1,0 +1,52 @@
+[package]
+name = "vsm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow = "1"
+async-stream = "0.3"
+axum = { version = "0.8", features = ["macros"] }
+base64 = "0.22"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive", "env"] }
+clap_complete = "4"
+hex = "0.4"
+md5 = "0.8"
+png = "0.17"
+quick-xml = "0.41"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.6", features = ["cors", "fs", "limit"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+utoipa = { version = "5", features = ["chrono", "uuid"] }
+aes-gcm = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+rmcp = { version = "3.3", default-features = false, features = ["server", "transport-io"] }
+totp-rs = { version = "5", features = ["gen_secret", "otpauth"] }
+keyring = { version = "3", features = ["apple-native", "windows-native", "sync-secret-service"] }
+flate2 = "1"
+futures-core = "0.3"
+fs2 = "0.4"
+libc = "0.2"
+tar = "0.4"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+tempfile = "3"
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+
+[[bin]]
+name = "vsm"
+path = "src/main.rs"
+
+[[bin]]
+name = "vsm-agent"
+path = "src/bin/agent.rs"

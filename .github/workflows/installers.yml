@@ -1,0 +1,97 @@
+name: Prepare installers
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  agent:
+    name: Linux x64 agent
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config
+      - run: cargo build --locked --release -p vsm --bin vsm-agent
+      - run: cargo test --locked -p vsm
+      - name: Package agent
+        run: |
+          mkdir -p agent-artifact
+          cp target/release/vsm-agent agent-artifact/vsm-agent
+          cd agent-artifact
+          sha256sum vsm-agent > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsm-agent-linux-x64
+          path: agent-artifact/
+          if-no-files-found: error
+          retention-days: 30
+
+  desktop:
+    name: ${{ matrix.label }}
+    needs: agent
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Windows x64
+            os: windows-2022
+            target: x86_64-pc-windows-msvc
+            bundles: nsis,msi
+          - label: macOS Apple Silicon
+            os: macos-14
+            target: aarch64-apple-darwin
+            bundles: dmg
+          - label: macOS Intel
+            os: macos-15-intel
+            target: x86_64-apple-darwin
+            bundles: dmg
+          - label: Linux x64
+            os: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            bundles: deb,appimage
+    runs-on: ${{ matrix.os }}
+    env:
+      # Avoid requiring FUSE during AppImage assembly on hosted runners.
+      APPIMAGE_EXTRACT_AND_RUN: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: installers-${{ matrix.target }}
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev librsvg2-dev libayatana-appindicator3-dev libdbus-1-dev pkg-config patchelf
+      - uses: actions/download-artifact@v4
+        with:
+          name: vsm-agent-linux-x64
+          path: .vsm/artifacts
+      - name: Verify bundled agent
+        run: node scripts/package-artifacts.mjs verify-agent
+      - run: npm ci
+      - run: node --test scripts/package-artifacts.test.mjs
+      - run: npm test
+      - run: cargo build --locked --release -p vsm --bin vsm --target ${{ matrix.target }}
+      - name: Build desktop installers
+        run: node scripts/desktop.mjs build --ci --target ${{ matrix.target }} --bundles "${{ matrix.bundles }}" --config tauri.packaging.conf.json -- --locked
+      - name: Collect installers and CLI
+        run: node scripts/package-artifacts.mjs collect ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsm-${{ matrix.target }}
+          path: dist/installers/${{ matrix.target }}/
+          if-no-files-found: error
+          retention-days: 30

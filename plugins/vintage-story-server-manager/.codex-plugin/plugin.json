@@ -1,0 +1,28 @@
+{
+  "name": "vintage-story-server-manager",
+  "version": "0.1.0",
+  "description": "Administer Vintage Story servers through a local or hosted Manager with shared MCP and CLI tools.",
+  "author": {
+    "name": "Vintage Story Server Manager contributors"
+  },
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Vintage Story Server Manager",
+    "shortDescription": "Manage servers, mods, players and backups.",
+    "longDescription": "Connect to your Manager to inspect servers, install compatible mods, manage players, edit configuration, manage backups and investigate operations. Uses your existing Manager permissions and keeps credentials outside the plugin.",
+    "developerName": "Vintage Story Server Manager contributors",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Show my servers and investigate any failed activities.",
+      "Install the highest compatible version of a mod.",
+      "Whitelist a player on my Vintage Story server."
+    ],
+    "brandColor": "#28bfa3"
+  }
+}

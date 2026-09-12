@@ -1,0 +1,13 @@
+{
+  "bundle": {
+    "resources": {
+      "../../.vsm/artifacts/vsm-agent": "agent/vsm-agent",
+      "../../LICENSE": "licenses/LICENSE",
+      "../ui/public/fonts/IBM-Plex-Mono-LICENSE.txt": "licenses/IBM-Plex-Mono-LICENSE.txt",
+      "../ui/public/fonts/IBM-Plex-Sans-LICENSE.txt": "licenses/IBM-Plex-Sans-LICENSE.txt"
+    },
+    "macOS": {
+      "signingIdentity": "-"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{$VSM_DOMAIN} {
+    encode zstd gzip
+    reverse_proxy controller:4317
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy same-origin
+        X-Frame-Options DENY
+    }
+}

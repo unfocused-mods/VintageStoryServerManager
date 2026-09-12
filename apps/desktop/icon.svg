@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64">
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#202020"/>
+  <g fill="none" stroke="#eeeeee" stroke-width="2.5" stroke-linejoin="round">
+    <rect x="11" y="14" width="37" height="12" rx="2"/>
+    <path d="M32 42H13a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h25"/>
+    <path d="M20 20h19M20 36h7" stroke-linecap="round"/>
+  </g>
+  <g fill="#eeeeee"><circle cx="16" cy="20" r="1.4"/><circle cx="16" cy="36" r="1.4"/></g>
+  <g transform="translate(43 44) matrix(.9 -.32 .48 .76 0 0)">
+    <path d="M-10-13h7v6h6v-6h7v6h3v7h-3v6h3v7h-3v3H3v-3h-6v3h-7v-3h-3V6h3V0h-3v-7h3z" transform="translate(0 3)" fill="#167d6b" stroke="#202020" stroke-width="2.2" stroke-linejoin="miter"/>
+    <g fill="#32c4a5">
+      <path d="M-7-13h4v26h-4zM3-13h4v26H3z"/>
+      <path d="M-10-11h2v22h-2zM8-11h2v22H8z" fill="#22a98f"/>
+      <path d="M-13-7h26v4h-26zM-13 3h26v4h-26z"/>
+      <path d="M-11-10h22v2h-22zM-11 8h22v2h-22z" fill="#22a98f"/>
+    </g>
+    <path d="M-3-3h6v6h-6z" fill="#202020"/>
+  </g>
+</svg>

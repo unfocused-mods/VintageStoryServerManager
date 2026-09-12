@@ -1,0 +1,26 @@
+services:
+  controller:
+    build:
+      context: ..
+    restart: unless-stopped
+    volumes:
+      - controller:/var/lib/vsm
+      # Mount SSH keys and known_hosts separately, read-only. See docs/hosting.md.
+    expose:
+      - "4317"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      VSM_DOMAIN: ${VSM_DOMAIN:?Set VSM_DOMAIN to your dashboard domain}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  controller:
+  caddy_data:
+  caddy_config:

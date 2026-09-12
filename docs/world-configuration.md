@@ -1,0 +1,11 @@
+# Server settings and world creation
+
+Settings exposes validated server fields and an advanced JSON editor. Unknown fields are retained. The Manager protects deployment bind addresses, ports, mod paths, and the selected world file; use deployment or world selection to change these. Stop the game before saving server configuration. Saving requires the current file revision and a successful recovery copy.
+
+Create a world reads the installed release's own world-creation metadata and English labels. For Vintage Story 1.22.7 this exposes five play styles and 64 settings, including survival rules, climate, land cover, world width and length, resources, temporal mechanics, and map access. Seed and world height are separate controls. The Manager accepts heights of 128–2048 blocks in increments of 32. Larger worlds and greater heights may require more memory. Metadata is inspected as data; game assemblies are not executed to obtain it, and their metadata is not redistributed in this repository.
+
+New-world settings start with the installed defaults, then the chosen play style, then explicit changes. Width and length also set the server map dimensions; fire spreading and falling blocks also update their server-level switches. Unknown mod settings are retained, but this initial form does not discover third-party mod option schemas. Unknown or unavailable metadata blocks creation instead of inventing settings. Older Remotes need **Update Remote** in Infrastructure.
+
+Creation validates before interrupting a running world, stops gracefully, takes a recovery copy, refreshes configuration after shutdown, and writes a unique new save path. If the game was running, it starts again; otherwise generation waits until Start. Previous save files remain available. These controls create a new world; changing generation settings does not regenerate existing terrain.
+
+Validation includes a real 1.22.7 Exploration world with a 1024×1024 map, modified hunger and map visibility, and a second creation while the game was running. Both reached healthy startup. Invalid options were rejected before downtime, unknown configuration survived, and preset/default values reset previous known world rules.

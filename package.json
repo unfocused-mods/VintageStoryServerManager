@@ -1,0 +1,21 @@
+{
+  "name": "vintage-story-server-manager",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/ui"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/ui",
+    "build": "npm run build --workspace apps/ui",
+    "test": "npm run test --workspace apps/ui",
+    "desktop": "node scripts/desktop.mjs dev",
+    "typegen": "node scripts/typegen.mjs",
+    "desktop:build": "node scripts/desktop.mjs build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "openapi-typescript": "^7.0.0",
+    "prettier": "^3.9.6"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "azure-personal",
+  "name": "My Azure subscription",
+  "provider": "azure",
+  "credential_ref": "",
+  "settings": {
+    "auth": "azure_cli",
+    "subscription_id": "00000000-0000-0000-0000-000000000000"
+  }
+}

@@ -23,6 +23,7 @@ async function fixture() {
   );
   await writeFile(path.join(root, ".vsm/owner.token"), "must-not-be-packaged");
   await writeFile(path.join(root, "LICENSE"), "license");
+  await writeFile(path.join(root, "THIRD-PARTY-NOTICES.txt"), "dependency notices");
   await writeFile(path.join(root, "docs/installers.md"), "instructions");
   await writeFile(path.join(root, "apps/ui/dist/index.html"), "dashboard");
   return root;
@@ -67,6 +68,11 @@ test("collects expected installers, CLI, UI, and agent without inventory data; r
   assert.equal(listing.status, 0, listing.stderr);
   assert.match(listing.stdout, /ui\/index\.html/);
   assert.match(listing.stdout, /artifacts\/vsm-agent/);
+  assert.match(listing.stdout, /\/LICENSE/);
+  assert.match(listing.stdout, /\/THIRD-PARTY-NOTICES\.txt/);
+  const notices = spawnSync("tar", ["-xOzf", archive, `vsm-cli-${target}/THIRD-PARTY-NOTICES.txt`], { encoding: "utf8" });
+  assert.equal(notices.status, 0, notices.stderr);
+  assert.equal(notices.stdout, "dependency notices");
   assert.doesNotMatch(listing.stdout, /owner\.token|\.vsm/);
   await assert.rejects(collect(target, root), /EEXIST/);
 });

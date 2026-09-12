@@ -99,6 +99,10 @@ export async function collect(target, workspace = root) {
   await copyFile(agent, path.join(stage, "artifacts/vsm-agent"));
   await copyFile(path.join(workspace, "LICENSE"), path.join(stage, "LICENSE"));
   await copyFile(
+    path.join(workspace, "THIRD-PARTY-NOTICES.txt"),
+    path.join(stage, "THIRD-PARTY-NOTICES.txt"),
+  );
+  await copyFile(
     path.join(workspace, "docs/installers.md"),
     path.join(stage, "README.md"),
   );

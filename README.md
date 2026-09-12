@@ -127,4 +127,4 @@ npm run typegen
 
 [Hosted dashboard](docs/hosting.md) · [Agent setup and backups](docs/agent.md) · [Architecture](docs/architecture.md) · [Status and limitations](docs/status.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
-Apache-2.0. This is an independent community project, not an official Anego Studios product. Game binaries and mods are downloaded from their respective sources and are not included in the source repository.
+Licensed under [Apache-2.0](LICENSE). Dependencies retain their own licenses; see [third-party notices](THIRD-PARTY-NOTICES.txt). This is an independent community project, not an official Anego Studios product. Game binaries and mods are downloaded from their respective sources and are not included in the source repository.

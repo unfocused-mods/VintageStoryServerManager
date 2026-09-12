@@ -2,7 +2,7 @@
 
 This is pre-release software. Public hosting and sensitive production worlds require review of the limitations in `docs/status.md`.
 
-Do not disclose credentials or exploitable vulnerability details in public issues. Until this project has a published security contact, use the repository host's private vulnerability reporting feature if enabled; otherwise contact the maintainer privately before sharing details.
+Report security vulnerabilities through [GitHub's private vulnerability reporting form](https://github.com/cjohnsto-nz/VintageStoryServerManager/security/advisories/new). Do not put credentials, private keys, tokens or exploitable vulnerability details in public issues. Remove secrets from reports and attachments before sharing them, including private reports.
 
 ## Trust boundaries
 

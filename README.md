@@ -19,7 +19,7 @@ Except where required by applicable law or agreed in writing, the project and it
 
 ## Desktop app
 
-Download the Windows x64 desktop installer from [Releases](https://github.com/cjohnsto-nz/VintageStoryServerManager/releases). The initial alpha also includes the Windows CLI and Linux x64 Remote agent. macOS Intel/Apple Silicon and Linux x64 desktop packages can be built using the manual **Prepare installers** workflow; they have not yet passed installed-platform acceptance testing. See [installer formats and checksum verification](docs/installers.md).
+Download desktop installers from [Releases](https://github.com/cjohnsto-nz/VintageStoryServerManager/releases): Windows x64 (`.exe`/`.msi`), macOS Intel and Apple Silicon (`.dmg`), and Linux x64 (`.deb`/`.AppImage`). The alpha also includes CLI archives for each platform and the Linux x64 Remote agent. All platform builds completed in GitHub Actions; native clean-machine acceptance testing remains incomplete. See [installer formats and checksum verification](docs/installers.md).
 
 These alpha packages are unsigned or ad-hoc signed, and macOS packages are not notarized. Operating-system security prompts are expected. Checksums verify download integrity; they are not publisher signatures.
 

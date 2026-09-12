@@ -1,6 +1,6 @@
 # Alpha releases and development installers
 
-Download published binaries from [GitHub Releases](https://github.com/cjohnsto-nz/VintageStoryServerManager/releases). The initial alpha release includes Windows x64 NSIS/MSI installers, the Windows CLI archive and a Linux x64 Remote agent. The release asset list is authoritative; macOS and Linux desktop packages remain workflow-buildable targets until published and tested. Read the [cloud-cost responsibility notice](../README.md#cloud-costs-and-responsibility) before deploying resources.
+Download published binaries from [GitHub Releases](https://github.com/cjohnsto-nz/VintageStoryServerManager/releases). The alpha includes Windows x64 NSIS/MSI installers, macOS Intel and Apple Silicon DMGs, Linux x64 DEB/AppImage packages, a CLI archive for each platform, and the Linux x64 Remote agent. All platform builds completed in GitHub Actions; successful packaging does not establish native clean-machine acceptance, which remains incomplete. Read the [cloud-cost responsibility notice](../README.md#cloud-costs-and-responsibility) before deploying resources.
 
 The **Prepare installers** GitHub Actions workflow runs only from **Actions → Prepare installers → Run workflow**. Select the branch to build. It does not publish a release or deploy a server. Existing test workflows still run on pushes and pull requests.
 

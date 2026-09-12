@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@1.96.0
       - uses: Swatinem/rust-cache@v2
       - run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config
       - run: cargo build --locked --release -p vsm --bin vsm-agent
@@ -65,7 +65,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@1.96.0
         with:
           targets: ${{ matrix.target }}
       - uses: Swatinem/rust-cache@v2

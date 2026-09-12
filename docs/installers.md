@@ -33,7 +33,9 @@ For a separate local service, extract the archive, open a terminal in that direc
 
 ## Build locally
 
-Install [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/), Rust, and Node.js 22. Run `npm ci`. Source development uses `npm run desktop`.
+Install [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/), Rust 1.96.0, and Node.js 22. Run `npm ci`. Source development uses `npm run desktop`.
+
+Published builds pin Rust 1.96.0 for both the agent and desktop/CLI so their standard-library license notices match `THIRD-PARTY-NOTICES.txt`. Use that toolchain for local release builds too (`rustup override set 1.96.0`). When changing the release toolchain, regenerate the notices with `scripts/generate-notices.py` before building. The separate Checks workflow continues to test the current stable Rust toolchain.
 
 To create a complete installer, download the agent artifact from the same source revision into `.vsm/artifacts/` (including `SHA256SUMS`), then run:
 

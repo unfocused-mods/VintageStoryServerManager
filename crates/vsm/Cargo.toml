@@ -36,7 +36,7 @@ futures-core = "0.3"
 fs2 = "0.4"
 libc = "0.2"
 tar = "0.4"
-zip = { version = "2", default-features = false, features = ["deflate"] }
+zip = { version = "9", default-features = false, features = ["deflate"] }
 
 tempfile = "3"
 
